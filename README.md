@@ -1,6 +1,7 @@
 # studioTranscodeVue
 
 > 用VUE重构 的实时转码导播台
+> 开发中...亲们，等我哈。
 
 
 ## Build Setup
