@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-  	<v-lcpsPlayer>header</v-lcpsPlayer>
+  	<div class="lcpsPlayer-div">
+  		<v-lcpsPlayer :player="player">header</v-lcpsPlayer>
+  	</div>
     <img src="./assets/logo.png">
     <router-view></router-view>
   </div>
@@ -9,10 +11,19 @@
 <script>
 	import lcpsPlayer from './components/lcpsPlayer/lcpsPlayer.vue';
 	export default {
+		data() {
+			return {
+				player: {
+					types: 'allpreview',
+					playerId: 'lcpsPlayer',	
+				}
+			};
+		},
 	  name: 'app',	  
 		components: {'v-lcpsPlayer': lcpsPlayer}
-	}
+	} 
 </script>
 
 <style>
+	.lcpsPlayer-div{width: 500px;height:300px;}
 </style>
