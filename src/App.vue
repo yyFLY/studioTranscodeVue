@@ -3,7 +3,6 @@
   	<div class="lcpsPlayer-div">
   		<v-lcpsPlayer :player="player">header</v-lcpsPlayer>
   	</div>
-    <img src="./assets/logo.png">
     <router-view></router-view>
   </div>
 </template>
@@ -25,5 +24,8 @@
 </script>
 
 <style>
+	.el-select{width: 100%;}
+	.u-text-lightsilver{color: #99A9BF;}
+
 	.lcpsPlayer-div{width: 500px;height:300px;}
 </style>

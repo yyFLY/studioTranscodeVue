@@ -9,46 +9,47 @@
 //		width height volume 播放器的宽高音量
 //		channel urlType为smallVideo时,播放的第几路信源		
 		
-	  import * as types from './../../store/types';
-	  import swfobject  from './swfobject';//加载flash的js插件
-		export default {
-			props: {
-				player: {
-					type: Object
-				}
-			},
-			mounted: function(){
-				this.loadPlayer()
-			},
-			methods: {
-				loadPlayer(){
-					var urlType = this.player.types;
-	        var playerId = typeof this.player.playerId != 'undefined' ? this.player.playerId : 'LCPS-PLAYER' ;
-	        this.$refs.playerBox.id = playerId;
-	        var width = typeof this.player.width != 'undefined' ? this.player.width : '100%';
-	        var height =  typeof this.player.height != 'undefined' ? this.player.height : '100%';
-	        var volume =  typeof this.player.volume != 'undefined' ? this.player.volume : 1;
-	        var channel =  typeof this.player.channel != 'undefined' ? this.player.channel : 0;		
-					var lcpsUrl = types.LCPS_HOST;	
-					var stream ,url ;
-					
-					if(urlType == 'pgw'){
-						  url = 'rtmp://'+lcpsUrl+'/3001' ;
-						  stream = '3_pgw';
-					}
-					else if(urlType == 'allpreview'){
-						url = 'rtmp://'+lcpsUrl+'/3001' ;
-						stream = 'allpreview';
-					}
-					else if(urlType == 'smallVideo'){
-						  url = 'rtmp://'+lcpsUrl+'/3001' ;
-						  stream = channel+'_small'
-					}	
+  	import * as types from './../../store/types';
+  	import swfobject  from './swfobject';//加载flash的js插件
+	export default {
+		props: {
+			player: {
+				type: Object
 				
-          studioApp_embedPlayer(width, height,url,stream,volume, playerId);
-				}
 			}
-		}	
+		},
+		mounted: function(){
+			this.loadPlayer()
+		},
+		methods: {
+			loadPlayer(){
+				var urlType = this.player.types;
+		        var playerId = typeof this.player.playerId != 'undefined' ? this.player.playerId : 'LCPS-PLAYER' ;
+		        this.$refs.playerBox.id = playerId;
+		        var width = typeof this.player.width != 'undefined' ? this.player.width : '100%';
+		        var height =  typeof this.player.height != 'undefined' ? this.player.height : '100%';
+		        var volume =  typeof this.player.volume != 'undefined' ? this.player.volume : 1;
+		        var channel =  typeof this.player.channel != 'undefined' ? this.player.channel : 0;		
+				var lcpsUrl = types.LCPS_HOST;	
+				var stream ,url ;
+				
+				if(urlType == 'pgw'){
+					  url = 'rtmp://'+lcpsUrl+'/3001' ;
+					  stream = '3_pgw';
+				}
+				else if(urlType == 'allpreview'){
+					url = 'rtmp://'+lcpsUrl+'/3001' ;
+					stream = 'allpreview';
+				}
+				else if(urlType == 'smallVideo'){
+					  url = 'rtmp://'+lcpsUrl+'/3001' ;
+					  stream = channel+'_small'
+				}	
+			
+      studioApp_embedPlayer(width, height,url,stream,volume, playerId);
+			}
+		}
+	}	
 
     //嵌入播放器插件
     function studioApp_embedPlayer(width, height, url, stream, volume, playerId, bgcolor, bStart, noVideo) {
